@@ -85,6 +85,11 @@ export default {
         this.instantRes = Function(
           `return ${fakeVal}`
         )()
+        this.instantRes = String(this.instantRes)
+        if(this.instantRes.includes('.')){
+          this.instantRes = parseFloat(this.instantRes).toFixed(3)
+        }
+        this.instantRes = parseFloat(this.instantRes)
       }else this.res+=val
       this.operandCanCome = true
     },
@@ -148,8 +153,11 @@ export default {
           fakeVal = fakeVal.substring(0,fakeVal.length-1)
         }
         fakeVal = this.regDegistir(fakeVal)
-        this.instantRes = this.hesapla(fakeVal)
-
+        this.instantRes = String(this.hesapla(fakeVal))
+        if(this.instantRes.includes('.')){
+          this.instantRes = parseFloat(this.instantRes).toFixed(3)
+        }
+        this.instantRes = parseFloat(this.instantRes)
 
       }
     },
